@@ -1,0 +1,13 @@
+import { createClient } from '@supabase/supabase-js'
+
+// Supabase configuration — set these in .env for production
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+
+// Only create client if credentials exist
+export const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null
+
+// Toggle for using real Supabase vs mock data
+export const USE_SUPABASE = false
